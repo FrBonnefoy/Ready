@@ -12,6 +12,7 @@ def help():
                screnshoot(x): Sauvegarder une capture d'écran du navigateur avec l'image x. Ex: screenshot('test.png')
                screen(): Sauvegarder une capture d'écran du navigateur sous le nom 'browser.png'
                find(x,y): Trouver tous les éléments avec les identifiants html x et y. Ex: identifiant= h2 class="mb0" -> x='h2' ; y={'class':'mb0'}
+               printext(x): Imprimer le texte trouvé sur la console 
             ''')
 
 def open_session():
