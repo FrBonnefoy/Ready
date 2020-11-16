@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup as soup
+import time
 
 def help():
 
@@ -12,7 +13,7 @@ def help():
                screnshoot(x): Sauvegarder une capture d'écran du navigateur avec l'image x. Ex: screenshot('test.png')
                screen(): Sauvegarder une capture d'écran du navigateur sous le nom 'browser.png'
                find(x,y): Trouver tous les éléments avec les identifiants html x et y. Ex: identifiant= h2 class="mb0" -> x='h2' ; y={'class':'mb0'}
-               printext(x): Imprimer le texte trouvé sur la console 
+               printext(x): Imprimer le texte trouvé sur la console
             ''')
 
 def open_session():
@@ -56,13 +57,36 @@ def scroll():
 def change(x):
 	browser.get(x)
 
-class find(x,y=None):
-    def __init__(self):
+class scrape:
+    def __init__(self,x,y=None):
         self.x = x
         self.y = y if y is not None else x
     def now(self):
-        return sopa.findAll(x,y)
+        content=browser.page_source
+        sopa=soup(content,'html.parser')
+        if self.x==self.y:
+            return sopa.findAll(self.x)
+        else:
+            return sopa.findAll(self.x,self.y)
+
+
+    def now(self):
+        content=browser.page_source
+        sopa=soup(content,'html.parser')
+        if self.x=self.y:
+            return sopa.findAll(self.x)
+        else:
+            return sopa.findAll(self.x,self.y)
 
 def printext(x):
     for a in x:
         print(a.text)
+
+def geturls(x):
+    global urls
+    urls=[]
+    for a in x:
+        try:
+            urls.append(a['href'])
+        except:
+            pass
